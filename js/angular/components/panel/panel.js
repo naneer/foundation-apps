@@ -52,7 +52,7 @@
       };
 
       function preLink(scope, iElement, iAttrs, controller) {
-        iAttrs.$set('zf-closable', type);
+        iAttrs.$set('zfClosable', type);
         scope.position = scope.position || 'left';
         scope.positionClass = 'panel-' + scope.position;
       }

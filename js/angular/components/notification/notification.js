@@ -133,7 +133,7 @@
       };
 
       function preLink(scope, iElement, iAttrs) {
-        iAttrs.$set('zf-closable', 'notification');
+        iAttrs.$set('zfClosable', 'notification');
       }
 
       function postLink(scope, element, attrs, controller) {
@@ -214,7 +214,7 @@
       };
 
       function preLink(scope, iElement, iAttrs, controller) {
-        iAttrs.$set('zf-closable', type);
+        iAttrs.$set('zfClosable', type);
       }
 
       function postLink(scope, element, attrs, controller) {

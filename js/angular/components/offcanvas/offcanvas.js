@@ -56,7 +56,7 @@
       }
 
       function preLink(scope, iElement, iAttrs, controller) {
-        iAttrs.$set('zf-closable', type);
+        iAttrs.$set('zfClosable', type);
         document.body.classList.add('has-off-canvas');
       }
 

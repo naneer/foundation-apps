@@ -120,7 +120,7 @@
       };
 
       function preLink(scope, iElement, iAttrs) {
-        iAttrs.$set('zf-closable', 'actionsheet');
+        iAttrs.$set('zfClosable', 'actionsheet');
       }
 
       function postLink(scope, element, attrs, controller) {
