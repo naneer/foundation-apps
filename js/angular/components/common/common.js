@@ -3,6 +3,7 @@
 
   angular.module('foundation.common', ['foundation.core'])
     .directive('zfClose', zfClose)
+    .directive('zfClosable', zfClosable)
     .directive('zfOpen', zfOpen)
     .directive('zfToggle', zfToggle)
     .directive('zfEscClose', zfEscClose)
@@ -21,30 +22,36 @@
     return directive;
 
     function link(scope, element, attrs) {
-      var targetId = '';
-      if (attrs.zfClose) {
-        targetId = attrs.zfClose;
-      } else {
-        var parentElement= false;
-        var tempElement = element.parent();
-        //find parent modal
-        while(parentElement === false) {
-          if(tempElement[0].nodeName == 'BODY') {
-            parentElement = '';
-          }
-
-          if(typeof tempElement.attr('zf-closable') !== 'undefined' && tempElement.attr('zf-closable') !== false) {
-            parentElement = tempElement;
-          }
-
-          tempElement = tempElement.parent();
-        }
-        targetId = parentElement.attr('id');
-      }
-
       element.on('click', function(e) {
-        foundationApi.publish(targetId, 'close');
         e.preventDefault();
+        if (attrs.zfClose) {
+          var targetId = attrs.zfClose;  
+          foundation.publish(targetId, 'close');
+        } else {
+          scope.$emit('zf-close');
+        }
+      });
+    }
+  }
+  
+  zfClosable.$inject = ['FoundationApi'];
+  
+  function zfClosable(foundationApi) {
+    var directive = {
+      restrict: 'A',
+      link: link
+    };
+    
+    return directive;
+  
+    function link(scope, element, attrs) {
+      var id = attrs.id;
+      
+      scope.$on('zf-close', function(e, data) {
+        if (scope.active === false) return;
+        if (data && data.exclude === id) return;
+        if (e.stopPropagation) e.stopPropagation();
+        foundationApi.publish(id, 'close');
       });
     }
   }

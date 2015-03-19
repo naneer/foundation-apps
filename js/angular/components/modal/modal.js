@@ -57,7 +57,7 @@
       };
 
       function preLink(scope, iElement, iAttrs, controller) {
-          iAttrs.$set('zf-closable', type);
+        //iAttrs.$set('zf-closable', type);
       }
 
       function postLink(scope, element, attrs) {
