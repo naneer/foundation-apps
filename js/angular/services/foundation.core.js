@@ -9,7 +9,7 @@
     .factory('Utils', Utils)
   ;
 
-  FoundationApi.$inject = ['FoundationAnimation'];
+  FoundationApi.$inject = ['$rootScope', 'FoundationAnimation'];
 
   function FoundationApi(FoundationAnimation) {
     var listeners  = {};
