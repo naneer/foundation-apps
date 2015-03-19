@@ -11,7 +11,7 @@
 
   FoundationApi.$inject = ['$rootScope', 'FoundationAnimation'];
 
-  function FoundationApi(FoundationAnimation) {
+  function FoundationApi($rootScope, FoundationAnimation) {
     var listeners  = {};
     var settings   = {};
     var uniqueIds  = [];
